@@ -4,6 +4,6 @@ const studentRouter = Router ()
 
 studentRouter.post("/students")
 studentRouter.get("/students")
-studentRouter.get("/student/:id")
+studentRouter.get("/students/:id")
 
 export default studentRouter
