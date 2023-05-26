@@ -5,5 +5,5 @@ export const createStudentSchema = Joi.object({
     cpf: Joi.string().length(11).required(),
     email: Joi.string().email().required(),
     picture: Joi.string().uri().required(),
-    class: Joi.number().integer().positive().required()
+    classId: Joi.number().integer().positive().required()
 })
