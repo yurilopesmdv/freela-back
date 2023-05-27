@@ -1,3 +1,5 @@
+import { db } from "../connection/database.connection.js"
+
 export async function postProject(req, res) {
     const {projectId, classId, projectUrl, userId} = req.body
     try {

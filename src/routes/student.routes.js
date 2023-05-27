@@ -5,7 +5,7 @@ import { createStudent, getAllStudents, getStudentById } from "../controllers/st
 
 const studentRouter = Router ()
 
-studentRouter.post("/students", validateSchema(createStudentSchema), createStudent)
+studentRouter.post("/register", validateSchema(createStudentSchema), createStudent)
 studentRouter.get("/students", getAllStudents)
 studentRouter.get("/students/:id", getStudentById)
 
