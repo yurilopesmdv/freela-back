@@ -1,4 +1,4 @@
-import { getAllDeliveriesQuery, getAllProjectsQuery, postProjectQuery } from "../repositories/project.repositories.js"
+import { getAllDeliveriesQuery, getAllProjectsQuery, getDelieverieByIdQuery, postProjectQuery, updateDeliverieQuery } from "../repositories/project.repositories.js"
 
 export async function postProject(req, res) {
     const {projectId, classId, projectUrl, userId} = req.body
@@ -31,8 +31,19 @@ export async function getAllDeliveries(req,res) {
 export async function getDelieverieById(req, res) {
     const {id} = req.params
     try {
-        const deliverie = {}
-        res.status(200).send(deliverie)
+        const { rows: deliverie} = await getDelieverieByIdQuery(id)
+        res.status(200).send(deliverie[0])
+    }catch (err) {
+        res.status(500).send(err.message)
+    }
+}
+
+export async function updateDeliverie(req, res) {
+    const {id} = req.params
+    const {grade} = req.body
+    try {
+        await updateDeliverieQuery(id, grade)
+        res.sendStatus(200)
     }catch (err) {
         res.status(500).send(err.message)
     }
