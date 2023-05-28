@@ -6,7 +6,7 @@ import { getAllDeliveries, getAllProjects, getDelieverieById, postProject } from
 const projectRouter = Router ()
 
 projectRouter.post("/projects", validateSchema(projectSchema), postProject)
-projectRouter.get("/project", getAllProjects)
+projectRouter.get("/projects", getAllProjects)
 projectRouter.get("/deliveries", getAllDeliveries)
 projectRouter.get("/deliveries/:id", getDelieverieById)
 

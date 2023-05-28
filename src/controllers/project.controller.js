@@ -1,8 +1,9 @@
-import { getAllProjectsQuery } from "../repositories/project.repositories.js"
+import { getAllDeliveriesQuery, getAllProjectsQuery, postProjectQuery } from "../repositories/project.repositories.js"
 
 export async function postProject(req, res) {
     const {projectId, classId, projectUrl, userId} = req.body
     try {
+        await postProjectQuery(projectId, classId, projectUrl, userId)
         res.sendStatus(201)
     }catch (err) {
         res.status(500).send(err.message)
@@ -20,7 +21,7 @@ export async function getAllProjects(req, res) {
 
 export async function getAllDeliveries(req,res) {
     try {
-        const deliveries = []
+        const { rows: deliveries} = await getAllDeliveriesQuery()
         res.status(200).send(deliveries)
     }catch (err) {
         res.status(500).send(err.message)
